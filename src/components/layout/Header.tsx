@@ -34,77 +34,80 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="bg-theme-gradient text-white shadow-strong border-b border-theme-accent/30">
-      <div className="container mx-auto px-4 py-4">
+    <header className="bg-theme-gradient text-white shadow-strong border-b border-theme-accent/30 sticky top-0 z-50">
+      <div className="container mx-auto px-2 sm:px-4 py-2 sm:py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="h-12 w-12 rounded-lg overflow-hidden border-2 border-theme-accent shadow-glow transition-all group-hover:border-theme-accentLight group-hover:shadow-glow-accent">
+          <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-lg overflow-hidden border-2 border-theme-accent shadow-glow transition-all group-hover:border-theme-accentLight group-hover:shadow-glow-accent">
               <img
                 src="https://onbcozjaiilxvmeipqjf.supabase.co/storage/v1/object/public/club-logos//-1Niwpcf1ltBk_KrB1iMQw_64x64.png"
                 alt="FKF Aldai Logo"
                 className="h-full w-full object-cover"
               />
             </div>
-            <div>
-              <span className="text-xl font-bold text-theme-accent">FKF Aldai</span>
-              <span className="text-sm text-theme-accent/70">Team Management</span>
+            <div className="hidden sm:block">
+              <span className="text-lg sm:text-xl font-bold text-theme-accent block">FKF Aldai</span>
+              <span className="text-xs sm:text-sm text-theme-accent/70">Team Management</span>
+            </div>
+            <div className="sm:hidden">
+              <span className="text-base font-bold text-theme-accent block">FKF</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-2 xl:space-x-6">
             {navigationItems.map((item) => {
               const IconComponent = item.icon;
               return (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`flex items-center space-x-1 hover:text-theme-accent transition-all px-3 py-2 rounded-lg ${
+                  className={`flex items-center space-x-1 hover:text-theme-accent transition-all px-2 xl:px-3 py-2 rounded-lg text-xs xl:text-sm whitespace-nowrap ${
                     location.pathname === item.path ? 'bg-theme-primary/50 text-theme-accent shadow-glow' : ''
                   }`}
                 >
-                  <IconComponent className="h-4 w-4" />
-                  <span className="text-sm font-medium">{item.name}</span>
+                  <IconComponent className="h-4 w-4 flex-shrink-0" />
+                  <span className="hidden xl:inline font-medium">{item.name}</span>
                 </Link>
               );
             })}
 
             {isAdminAuthenticated && isAdminRoute ? (
               <>
-                <Link to="/admin" className="flex items-center space-x-1 hover:text-theme-accent transition-all px-3 py-2 rounded-lg">
+                <Link to="/admin" className="flex items-center space-x-1 hover:text-theme-accent transition-all px-2 xl:px-3 py-2 rounded-lg text-xs xl:text-sm whitespace-nowrap">
                   <Shield className="h-4 w-4" />
-                  <span className="text-sm font-medium">Admin Dashboard</span>
+                  <span className="hidden xl:inline font-medium">Admin</span>
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-1 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-all shadow-soft hover:shadow-strong"
+                  className="flex items-center space-x-1 bg-red-600 hover:bg-red-700 px-3 xl:px-4 py-2 rounded-lg transition-all shadow-soft hover:shadow-strong text-xs xl:text-sm whitespace-nowrap"
                 >
                   <LogOut className="h-4 w-4" />
-                  <span className="text-sm font-medium">Logout</span>
+                  <span className="hidden xl:inline font-medium">Logout</span>
                 </button>
               </>
             ) : isOfficialAuthenticated && isOfficialRoute ? (
               <>
-                <Link to="/officials/dashboard" className="flex items-center space-x-1 hover:text-theme-accent transition-all px-3 py-2 rounded-lg">
+                <Link to="/officials/dashboard" className="flex items-center space-x-1 hover:text-theme-accent transition-all px-2 xl:px-3 py-2 rounded-lg text-xs xl:text-sm whitespace-nowrap">
                   <Users className="h-4 w-4" />
-                  <span className="text-sm font-medium">Officials Dashboard</span>
+                  <span className="hidden xl:inline font-medium">Officials</span>
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-1 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-all shadow-soft hover:shadow-strong"
+                  className="flex items-center space-x-1 bg-red-600 hover:bg-red-700 px-3 xl:px-4 py-2 rounded-lg transition-all shadow-soft hover:shadow-strong text-xs xl:text-sm whitespace-nowrap"
                 >
                   <LogOut className="h-4 w-4" />
-                  <span className="text-sm font-medium">Logout</span>
+                  <span className="hidden xl:inline font-medium">Logout</span>
                 </button>
               </>
             ) : (
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center">
                 <Link
                   to="/officials/login"
-                  className="flex items-center space-x-1 border-2 border-theme-accent hover:bg-theme-accent hover:text-theme-primary text-theme-accent px-4 py-2 rounded-lg font-semibold transition-all shadow-glow hover:shadow-strong"
+                  className="flex items-center space-x-1 border-2 border-theme-accent hover:bg-theme-accent hover:text-theme-primary text-theme-accent px-3 xl:px-4 py-2 rounded-lg font-semibold transition-all shadow-glow hover:shadow-strong text-xs xl:text-sm whitespace-nowrap"
                 >
                   <Users className="h-4 w-4" />
-                  <span className="text-sm">Officials Login</span>
+                  <span className="hidden xl:inline">Login</span>
                 </Link>
               </div>
             )}
@@ -121,19 +124,19 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="lg:hidden mt-4 space-y-3 pb-3">
+          <nav className="lg:hidden mt-3 sm:mt-4 space-y-2 pb-3 border-t border-theme-accent/20 pt-3">
             {navigationItems.map((item) => {
               const IconComponent = item.icon;
               return (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`flex items-center space-x-2 py-2 px-3 hover:bg-theme-primary/50 rounded-lg transition-all ${
+                  className={`flex items-center space-x-2 py-2 px-3 hover:bg-theme-primary/50 rounded-lg transition-all text-sm ${
                     location.pathname === item.path ? 'bg-theme-primary/50 text-theme-accent' : ''
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <IconComponent className="h-5 w-5" />
+                  <IconComponent className="h-5 w-5 flex-shrink-0" />
                   <span>{item.name}</span>
                 </Link>
               );
@@ -143,7 +146,7 @@ const Header: React.FC = () => {
               <>
                 <Link
                   to="/admin"
-                  className="flex items-center space-x-2 py-2 px-3 hover:bg-theme-primary/50 rounded-lg transition-all"
+                  className="flex items-center space-x-2 py-2 px-3 hover:bg-theme-primary/50 rounded-lg transition-all text-sm"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <Shield className="h-5 w-5" />
@@ -151,7 +154,7 @@ const Header: React.FC = () => {
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-2 w-full text-left py-2 px-3 bg-red-600 hover:bg-red-700 rounded-lg transition-all"
+                  className="flex items-center space-x-2 w-full text-left py-2 px-3 bg-red-600 hover:bg-red-700 rounded-lg transition-all text-sm"
                 >
                   <LogOut className="h-5 w-5" />
                   <span>Logout</span>
@@ -161,7 +164,7 @@ const Header: React.FC = () => {
               <>
                 <Link
                   to="/officials/dashboard"
-                  className="flex items-center space-x-2 py-2 px-3 hover:bg-theme-primary/50 rounded-lg transition-all"
+                  className="flex items-center space-x-2 py-2 px-3 hover:bg-theme-primary/50 rounded-lg transition-all text-sm"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <Users className="h-5 w-5" />
@@ -169,7 +172,7 @@ const Header: React.FC = () => {
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-2 w-full text-left py-2 px-3 bg-red-600 hover:bg-red-700 rounded-lg transition-all"
+                  className="flex items-center space-x-2 w-full text-left py-2 px-3 bg-red-600 hover:bg-red-700 rounded-lg transition-all text-sm"
                 >
                   <LogOut className="h-5 w-5" />
                   <span>Logout</span>
@@ -179,7 +182,7 @@ const Header: React.FC = () => {
               <>
                 <Link
                   to="/officials/login"
-                  className="flex items-center space-x-2 py-2 px-3 border-2 border-theme-accent hover:bg-theme-accent hover:text-theme-primary text-theme-accent rounded-lg transition-all font-semibold"
+                  className="flex items-center space-x-2 py-2 px-3 border-2 border-theme-accent hover:bg-theme-accent hover:text-theme-primary text-theme-accent rounded-lg transition-all font-semibold text-sm"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <Users className="h-5 w-5" />

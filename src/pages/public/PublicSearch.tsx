@@ -152,32 +152,32 @@ const PublicSearch: React.FC = () => {
         <div className="absolute top-1/2 left-0 w-full h-0.5 bg-theme-primary opacity-30 transform -translate-y-1/2"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-8 relative z-10">
-          <h1 className="text-4xl font-bold text-theme-primary mb-4 drop-shadow-lg">Player Search</h1>
-          <p className="text-lg text-theme-primary/70">
+        <div className="text-center mb-6 sm:mb-8 relative z-10">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-theme-primary mb-2 sm:mb-4 drop-shadow-lg">Player Search</h1>
+          <p className="text-sm sm:text-base lg:text-lg text-theme-primary/70">
             Search through our comprehensive player database
           </p>
         </div>
 
         {/* Search Controls */}
-        <div className="bg-white/98 backdrop-blur-md rounded-lg shadow-strong p-6 mb-8 border border-theme-accent/30 relative z-10">
-          <div className="flex flex-col md:flex-row gap-4">
+        <div className="bg-white/98 backdrop-blur-md rounded-lg shadow-strong p-4 sm:p-6 mb-6 sm:mb-8 border border-theme-accent/30 relative z-10">
+          <div className="flex flex-col gap-3 sm:gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-theme-accent w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-theme-accent w-4 h-4 sm:w-5 sm:h-5" />
               <input
                 type="text"
                 placeholder="Search players..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white border border-theme-accent/20 rounded-lg focus:ring-2 focus:ring-theme-accent focus:border-theme-accent text-gray-900 placeholder-gray-600 shadow-soft"
+                className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-3 bg-white border border-theme-accent/20 rounded-lg focus:ring-2 focus:ring-theme-accent focus:border-theme-accent text-gray-900 placeholder-gray-600 shadow-soft text-sm sm:text-base"
               />
             </div>
             <select
               value={searchType}
               onChange={(e) => setSearchType(e.target.value as any)}
-              className="px-4 py-3 bg-white border border-theme-accent/20 rounded-lg focus:ring-2 focus:ring-theme-accent focus:border-theme-accent text-gray-900 shadow-soft"
+              className="px-3 sm:px-4 py-2 sm:py-3 bg-white border border-theme-accent/20 rounded-lg focus:ring-2 focus:ring-theme-accent focus:border-theme-accent text-gray-900 shadow-soft text-sm sm:text-base w-full sm:w-auto"
             >
               <option value="all">All Fields</option>
               <option value="name">Name</option>
@@ -189,8 +189,8 @@ const PublicSearch: React.FC = () => {
 
         {/* Results Summary */}
         {hasSearched && (
-          <div className="mb-6 relative z-10">
-            <p className="text-theme-primary font-medium drop-shadow">
+          <div className="mb-4 sm:mb-6 relative z-10">
+            <p className="text-theme-primary font-medium drop-shadow text-sm sm:text-base">
               Showing {filteredPlayers.length} results for "{searchTerm}"
             </p>
           </div>
@@ -198,27 +198,27 @@ const PublicSearch: React.FC = () => {
 
         {/* Player Grid */}
         {!hasSearched ? (
-          <div className="text-center py-12 relative z-10">
-            <div className="bg-white/98 backdrop-blur-md rounded-lg shadow-soft p-8 border border-theme-accent/30 max-w-md mx-auto">
-              <User className="w-16 h-16 text-theme-accent mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-theme-primary mb-2 drop-shadow">Search for Players</h3>
-              <p className="text-theme-primary/70">
+          <div className="text-center py-8 sm:py-12 relative z-10">
+            <div className="bg-white/98 backdrop-blur-md rounded-lg shadow-soft p-6 sm:p-8 border border-theme-accent/30 max-w-md mx-auto">
+              <User className="w-12 h-12 sm:w-16 sm:h-16 text-theme-accent mx-auto mb-3 sm:mb-4" />
+              <h3 className="text-base sm:text-lg font-medium text-theme-primary mb-2 drop-shadow">Search for Players</h3>
+              <p className="text-theme-primary/70 text-sm sm:text-base">
               Use the search box above to find players by name, club, position, or league ID
             </p>
             </div>
           </div>
         ) : filteredPlayers.length === 0 ? (
-          <div className="text-center py-12 relative z-10">
-            <div className="bg-white/98 backdrop-blur-md rounded-lg shadow-soft p-8 border border-theme-accent/30 max-w-md mx-auto">
-              <User className="w-16 h-16 text-theme-accent mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-theme-primary mb-2 drop-shadow">No players found</h3>
-              <p className="text-theme-primary/70">
+          <div className="text-center py-8 sm:py-12 relative z-10">
+            <div className="bg-white/98 backdrop-blur-md rounded-lg shadow-soft p-6 sm:p-8 border border-theme-accent/30 max-w-md mx-auto">
+              <User className="w-12 h-12 sm:w-16 sm:h-16 text-theme-accent mx-auto mb-3 sm:mb-4" />
+              <h3 className="text-base sm:text-lg font-medium text-theme-primary mb-2 drop-shadow">No players found</h3>
+              <p className="text-theme-primary/70 text-sm sm:text-base">
               Try adjusting your search terms
             </p>
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 relative z-10">
             {filteredPlayers.map((player) => (
               <Link
                 key={player.id}
