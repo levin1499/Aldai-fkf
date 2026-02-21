@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Users, Shield, Search, Menu, X, LogOut, Home, Info, Phone, Camera, Newspaper, CheckCircle } from 'lucide-react';
+import { Users, Shield, Search, Menu, X, LogOut,  Info, Phone, Camera, Newspaper } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLeagueOfficialAuth } from '../../contexts/LeagueOfficialAuthContext';
 
